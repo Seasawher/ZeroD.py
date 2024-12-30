@@ -65,6 +65,5 @@ if __name__ == '__main__':
         p = np.argmax(y_batch, axis=1)
 
         # 予測を正解と比較して、合っていたらインクリメント
-        if p == t[i]:
-            accuracy_cnt += np.sum(p == t[i:i+batch_size])
+        accuracy_cnt += np.sum(p == t[i:i+batch_size])
     print("Accuracy: " + str(float(accuracy_cnt) / len(x)))
