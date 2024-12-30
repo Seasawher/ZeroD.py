@@ -63,6 +63,5 @@ if __name__ == '__main__':
         p = np.argmax(y)
 
         # 予測を正解と比較して、合っていたらインクリメント
-        if p == t[i]:
-            accuracy_cnt += 1
+        accuracy_cnt += p == t[i]
     print("Accuracy: " + str(float(accuracy_cnt) / len(x)))
