@@ -1,5 +1,8 @@
 # README
 
+* 書籍サイト: https://www.oreilly.co.jp/books/9784873117584/
+* サンプルコード: https://github.com/oreilly-japan/deep-learning-from-scratch
+
 開発環境の構築には `uv` を使用します。
 
 ## 最初の環境の初期化
