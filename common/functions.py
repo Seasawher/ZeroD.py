@@ -33,6 +33,7 @@ def softmax(x):
     return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
 
 def cross_entropy_error(y, t):
+    """交差エントロピー誤差"""
     if y.ndim == 1:
         t = t.reshape(1, t.size)
         y = y.reshape(1, y.size)
