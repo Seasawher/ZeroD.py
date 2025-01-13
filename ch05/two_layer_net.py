@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
-from common.layers import *
+from common.layers import Affine, Relu, SoftmaxWithLoss
 from common.gradient import numerical_gradient
 from collections import OrderedDict
 
@@ -27,6 +27,7 @@ class TwoLayerNet:
         self.lastLayer = SoftmaxWithLoss()
 
     def predict(self, x):
+        """予測(推論)を行う"""
         for layer in self.layers.values():
             x = layer.forward(x)
 
@@ -38,15 +39,22 @@ class TwoLayerNet:
         return self.lastLayer.forward(y, t)
 
     def accuracy(self, x, t):
+        """認識制度を求める"""
         y = self.predict(x)
         y = np.argmax(y, axis=1)
-        if t.ndim != 1 : t = np.argmax(t, axis=1)
+        if t.ndim != 1 :
+            t = np.argmax(t, axis=1)
 
         accuracy = np.sum(y == t) / float(x.shape[0])
         return accuracy
 
-    # x:入力データ, t:教師データ
     def numerical_gradient(self, x, t):
+        """数値微分
+
+        Parameters:
+        * x 入力データ
+        * t 教師データ
+        """
         loss_W = lambda W: self.loss(x, t)
 
         grads = {}
