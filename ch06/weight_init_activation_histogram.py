@@ -46,7 +46,8 @@ for i in range(hidden_layer_size):
 for i, a in activations.items():
     plt.subplot(1, len(activations), i+1)
     plt.title(str(i+1) + "-layer")
-    if i != 0: plt.yticks([], [])
+    if i != 0:
+        plt.yticks([], [])
     # plt.xlim(0.1, 1)
     # plt.ylim(0, 7000)
     plt.hist(a.flatten(), 30, range=(0,1))
